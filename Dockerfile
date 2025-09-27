@@ -22,11 +22,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy the rest of your application's code
 COPY . .
 
-# Install Laravel dependencies
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Install application dependencies from the "application" directory
+RUN composer install --working-dir=./application --no-interaction --optimize-autoloader --no-dev
 
 # Set permissions for storage and bootstrap folders
-RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chown -R www-data:www-data application/logs application/config
 RUN chmod -R 775 storage bootstrap/cache
 
 # Configure Apache by copying our custom virtual host file
