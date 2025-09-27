@@ -20,10 +20,11 @@ WORKDIR /var/www/html
 # Copy the IMAP source files from the first stage
 COPY --from=imap_source /usr/src/php/ext/imap /usr/src/php/ext/imap
 
-# Install system dependencies. We still need the runtime libraries, but not the -dev package.
+# Install system dependencies and apply the patch
 RUN apt-get update && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y --no-install-recommends \
+      patch \
       libpng-dev \
       libjpeg-dev \
       libfreetype6-dev \
@@ -32,7 +33,10 @@ RUN apt-get update && \
       libzip-dev \
       libonig-dev \
       libkrb5-dev && \
-    # Now configure and install imap from the source we copied
+    # Download and apply the patch for the IMAP build error
+    curl -sS https://gist.githubusercontent.com/m-pr-f/9570395c1a426915f4585352028d763f/raw/a0a45558612f309a139b5260176884143a5796f7/imap-c-client-2007f-and-php-8.1.patch -o /tmp/imap.patch && \
+    patch -p1 -d /usr/src/php/ext/imap < /tmp/imap.patch && \
+    # Now configure and install imap from the patched source
     docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
     docker-php-ext-install imap && \
     # Install the other extensions
