@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 * environments.
 *
 */
-define('APP_BASE_URL', '[base_url]');
+define('APP_BASE_URL', 'https://hostivahub.tech/' );
 
 /*
 * --------------------------------------------------------------------------
@@ -32,28 +32,28 @@ define('APP_BASE_URL', '[base_url]');
 *
 * Auto added on install
 */
-define('APP_ENC_KEY', '[encryption_key]');
+define('APP_ENC_KEY', '86384491178583651062300823258772' );
 
 /**
  * Database Credentials
  * The hostname of your database server
  */
-define('APP_DB_HOSTNAME', '[db_hostname]');
+define('APP_DB_HOSTNAME', 'localhost');
 
 /**
  * The username used to connect to the database
  */
-define('APP_DB_USERNAME', '[db_username]');
+define('APP_DB_USERNAME', 'u988055531_hostivahubs');
 
 /**
  * The password used to connect to the database
  */
-define('APP_DB_PASSWORD', '[db_password]');
+define('APP_DB_PASSWORD', 'MEMOmemo@1234');
 
 /**
  * The name of the database you want to connect to
  */
-define('APP_DB_NAME', '[db_name]');
+define('APP_DB_NAME', 'u988055531_hostivahubs');
 
 /**
  * @since  2.3.0
