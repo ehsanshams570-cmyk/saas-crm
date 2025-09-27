@@ -5,7 +5,9 @@ FROM php:8.2-apache
 WORKDIR /var/www/html
 
 # Install system dependencies required by the application
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && \
+    export DEBIAN_FRONTEND=noninteractive && \
+    apt-get install -y --no-install-recommends \
       libpng-dev \
       libjpeg-dev \
       libfreetype6-dev \
@@ -14,10 +16,13 @@ RUN apt-get update && apt-get install -y \
       libzip-dev \
       libonig-dev \
       libc-client-dev \
-      libkrb5-dev \
-      && docker-php-ext-configure gd --with-freetype --with-jpeg \
-      && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-      && docker-php-ext-install gd pdo pdo_mysql mbstring exif pcntl bcmath zip imap
+      libkrb5-dev && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
+    docker-php-ext-install gd pdo pdo_mysql mbstring exif pcntl bcmath zip imap && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
