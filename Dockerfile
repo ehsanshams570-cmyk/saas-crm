@@ -14,7 +14,7 @@ RUN apt-get update && \
       unzip \
       libzip-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd pdo pdo_mysql zip && \
+    docker-php-ext-install gd pdo pdo_mysql zip bcmath && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -24,7 +24,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy the application code
 COPY . .
 
-# Install dependencies (this will now succeed because imap is removed)
+# Install dependencies
 RUN composer install --working-dir=./application --no-interaction --optimize-autoloader --no-dev
 
 # Set permissions for the application
