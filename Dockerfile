@@ -1,8 +1,8 @@
 # Stage 1: Get the IMAP source files from a matching PHP image
 FROM php:8.2-cli as imap_source
 
-# Create a directory for the source files
-RUN mkdir /usr/src/php/ext/imap
+# Create a directory for the source files, including parent directories
+RUN mkdir -p /usr/src/php/ext/imap
 
 # Download the PHP source code, which includes the imap extension
 RUN curl -fsSL https://www.php.net/distributions/php-8.2.0.tar.gz -o php.tar.gz && \
