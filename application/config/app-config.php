@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 * environments.
 *
 */
-define('APP_BASE_URL', 'https://hostivahub.tech/' );
+define('APP_BASE_URL', 'https://saas-crm-obur.onrender.com/' );
 
 /*
 * --------------------------------------------------------------------------
