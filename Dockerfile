@@ -15,7 +15,7 @@ RUN apt-get update && \
       unzip \
       libzip-dev \
       libonig-dev \
-      libc-client-dev \
+      uw-mailutils \
       libkrb5-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
