@@ -1,88 +1,22 @@
 <?php
 
-defined('BASEPATH') or exit('No direct script access allowed');
-/*
-* --------------------------------------------------------------------------
-* Base Site URL
-* --------------------------------------------------------------------------
-*
-* URL to your CodeIgniter root. Typically this will be your base URL,
-* WITH a trailing slash:
-*
-*   http://example.com/
-*
-* If this is not set then CodeIgniter will try guess the protocol, domain
-* and path to your installation. However, you should always configure this
-* explicitly and never rely on auto-guessing, especially in production
-* environments.
-*
-*/
-define('APP_BASE_URL', 'https://saas-crm-obur.onrender.com/' );
+defined("BASEPATH") or exit("No direct script access allowed");
 
-/*
-* --------------------------------------------------------------------------
-* Encryption Key
-* IMPORTANT: Do not change this ever!
-* --------------------------------------------------------------------------
-*
-* If you use the Encryption class, you must set an encryption key.
-* See the user guide for more info.
-*
-* http://codeigniter.com/user_guide/libraries/encryption.html
-*
-* Auto added on install
-*/
-define('APP_ENC_KEY', '86384491178583651062300823258772' );
+define("APP_BASE_URL", getenv("APP_BASE_URL") ?: "https://saas-crm-obur.onrender.com/" );
 
-/**
- * Database Credentials
- * The hostname of your database server
- */
-define('APP_DB_HOSTNAME', 'localhost');
+define("APP_ENC_KEY", getenv("APP_ENC_KEY") ?: "86384491178583651062300823258772");
 
-/**
- * The username used to connect to the database
- */
-define('APP_DB_USERNAME', 'u988055531_hostivahubs');
+define("APP_DB_HOSTNAME", getenv("APP_DB_HOSTNAME") ?: "localhost");
+define("APP_DB_USERNAME", getenv("APP_DB_USERNAME") ?: "root");
+define("APP_DB_PASSWORD", getenv("APP_DB_PASSWORD") ?: "");
+define("APP_DB_NAME", getenv("APP_DB_NAME") ?: "perfex_crm");
+define("APP_DB_PORT", getenv("APP_DB_PORT") ?: "3306");
 
-/**
- * The password used to connect to the database
- */
-define('APP_DB_PASSWORD', 'MEMOmemo@1234');
+define("APP_DB_CHARSET", getenv("APP_DB_CHARSET") ?: "utf8mb4");
+define("APP_DB_COLLATION", getenv("APP_DB_COLLATION") ?: "utf8mb4_unicode_ci");
 
-/**
- * The name of the database you want to connect to
- */
-define('APP_DB_NAME', 'u988055531_hostivahubs');
+define("SESS_DRIVER", getenv("SESS_DRIVER") ?: "database");
+define("SESS_SAVE_PATH", getenv("SESS_SAVE_PATH") ?: "sessions");
+define("APP_SESSION_COOKIE_SAME_SITE", getenv("APP_SESSION_COOKIE_SAME_SITE") ?: "Lax");
 
-/**
- * @since  2.3.0
- * Database charset
- */
-define('APP_DB_CHARSET', 'utf8mb4');
-
-/**
- * @since  2.3.0
- * Database collation
- */
-define('APP_DB_COLLATION', 'utf8mb4_unicode_ci');
-
-/**
- *
- * Session handler driver
- * By default the database driver will be used.
- *
- * For files session use this config:
- * define('SESS_DRIVER', 'files');
- * define('SESS_SAVE_PATH', NULL);
- * In case you are having problem with the SESS_SAVE_PATH consult with your hosting provider to set "session.save_path" value to php.ini
- *
- */
-define('SESS_DRIVER', 'database');
-define('SESS_SAVE_PATH', 'sessions');
-define('APP_SESSION_COOKIE_SAME_SITE', 'Lax');
-
-/**
- * Enables CSRF Protection
- */
-define('APP_CSRF_PROTECTION', true);
+define("APP_CSRF_PROTECTION", getenv("APP_CSRF_PROTECTION") ?: true);
